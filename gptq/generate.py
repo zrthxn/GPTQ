@@ -7,7 +7,7 @@ import time
 import torch
 from transformers import AutoTokenizer, LlamaForCausalLM
 
-from . import load_quant
+from gptq import load_quant
 
 
 parser = argparse.ArgumentParser()

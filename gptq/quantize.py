@@ -14,10 +14,10 @@ from tqdm import tqdm
 from transformers import AutoTokenizer, LlamaForCausalLM
 
 import gptq
-from .gptq import GPTQ, Quantizer
-from .datautils import get_dataset
-from .quant import quant_linear
-from .quant.quant_linear import QuantLinear
+from gptq.core import GPTQ, Quantizer
+from gptq.datautils import get_dataset
+from gptq.quant import quant_linear
+from gptq.quant.quant_linear import QuantLinear
 
 parser = argparse.ArgumentParser()
 

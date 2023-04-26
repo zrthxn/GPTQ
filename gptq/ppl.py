@@ -7,7 +7,7 @@ from datasets import load_dataset
 from tqdm import tqdm
 from transformers import AutoTokenizer, LlamaForCausalLM
 
-from . import load_quant
+from gptq import load_quant
 
 
 parser = argparse.ArgumentParser()

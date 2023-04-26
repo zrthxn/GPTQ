@@ -7,10 +7,10 @@ import torch
 import transformers
 from transformers import LlamaConfig, LlamaForCausalLM
 
-from . import fused_mlp, quant_linear
-from .fused_attention import QuantLlamaAttention, make_quant_attn
-from .fused_mlp import QuantLlamaMLP, make_fused_mlp
-from .quant_linear import QuantLinear, make_quant, triton_matmul4
+from .quant import fused_mlp, quant_linear
+from .quant.fused_attention import QuantLlamaAttention, make_quant_attn
+from .quant.fused_mlp import QuantLlamaMLP, make_fused_mlp
+from .quant.quant_linear import QuantLinear, make_quant, triton_matmul4
 
 
 def load_quant(checkpoint: str, warmup_autotune: bool = True, device: Optional[str] = 'cuda', fuse_mlp: Optional[bool] = None):
