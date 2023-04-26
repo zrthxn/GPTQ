@@ -13,7 +13,12 @@ from .quant.fused_mlp import QuantLlamaMLP, make_fused_mlp
 from .quant.quant_linear import QuantLinear, make_quant, triton_matmul4
 
 
-def load_quant(checkpoint: str, warmup_autotune: bool = True, device: Optional[str] = 'cuda', fuse_mlp: Optional[bool] = None):
+def load_quant(
+		checkpoint: str, 
+		filename: str = "model",
+		warmup_autotune: bool = True, 
+		device: Optional[str] = 'cuda', 
+		fuse_mlp: Optional[bool] = None):
 	"""
 	Load a quantized model from a checkpoint.
 	Args:
@@ -56,11 +61,11 @@ def load_quant(checkpoint: str, warmup_autotune: bool = True, device: Optional[s
 
 	# Load the quantized checkpoint
 	print('Loading model ...')
-	if (Path(checkpoint) / 'model.safetensors').exists():
+	if (Path(checkpoint) / f'{filename}.safetensors').exists():
 		from safetensors.torch import load_file as safe_load
-		model.load_state_dict(safe_load(Path(checkpoint) / 'model.safetensors'))
-	elif (Path(checkpoint) / 'model.pt').exists():
-		model.load_state_dict(torch.load(Path(checkpoint) / 'model.pt'), strict=False)
+		model.load_state_dict(safe_load(Path(checkpoint) / f'{filename}.safetensors'))
+	elif (Path(checkpoint) / f'{filename}.pt').exists():
+		model.load_state_dict(torch.load(Path(checkpoint) / f'{filename}.pt'), strict=False)
 	else:
 		raise FileNotFoundError(f"Could not find model checkpoint at {checkpoint}; please ensure that the path is correct and contains a `model.pt` or `model.safetensors` file.")
 	
