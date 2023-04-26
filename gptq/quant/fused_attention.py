@@ -3,8 +3,9 @@ from typing import Optional, Tuple
 
 import torch
 import torch.nn as nn
-from .quant_linear import QuantLinear
 from transformers.models.llama.modeling_llama import LlamaAttention, apply_rotary_pos_emb, LlamaConfig
+
+from .quant_linear import QuantLinear
 
 
 def make_quant_attn(model):

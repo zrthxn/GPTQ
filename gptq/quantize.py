@@ -10,13 +10,14 @@ from typing import Optional
 
 import torch
 import torch.nn as nn
-from datautils import get_dataset
-from gptq import GPTQ, Quantizer
-import gptq
-from gptq_triton import QuantLinear, quant_linear
 from tqdm import tqdm
 from transformers import AutoTokenizer, LlamaForCausalLM
 
+import gptq
+from .gptq import GPTQ, Quantizer
+from .datautils import get_dataset
+from .quant import quant_linear
+from .quant.quant_linear import QuantLinear
 
 parser = argparse.ArgumentParser()
 

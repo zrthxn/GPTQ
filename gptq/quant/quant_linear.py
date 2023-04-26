@@ -2,11 +2,12 @@ import functools
 import math
 from typing import Optional
 
-from . import custom_autotune
 import torch
 import torch.nn as nn
 import triton
 import triton.language as tl
+
+from . import custom_autotune
 from .utils import matmul4_kernel_config_pruner
 
 

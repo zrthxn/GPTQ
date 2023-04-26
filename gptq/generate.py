@@ -4,10 +4,10 @@ Example of how to use the quantized model to generate text.
 """
 import argparse
 import time
-
 import torch
-from gptq_triton import load_quant
 from transformers import AutoTokenizer, LlamaForCausalLM
+
+from . import load_quant
 
 
 parser = argparse.ArgumentParser()
