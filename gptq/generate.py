@@ -16,8 +16,8 @@ parser.add_argument('--quant', action='store_true', help='Whether the model is q
 parser.add_argument('--prompt', type=str, default='The quick brown fox', help='Prompt to use for generation')
 parser.add_argument('--max-length', type=int, default=2048, help='Maximum length of generated text')
 parser.add_argument('--temperature', type=float, default=1.0, help='Temperature for generation')
-parser.add_argument('--top-k', type=int, default=0, help='Top-k for generation')
-parser.add_argument('--top-p', type=float, default=0.0, help='Top-p for generation')
+parser.add_argument('--top-k', type=int, default=1, help='Top-k for generation')
+parser.add_argument('--top-p', type=float, default=0.5, help='Top-p for generation')
 parser.add_argument('--repetition-penalty', type=float, default=1.0, help='Repetition penalty for generation')
 
 
