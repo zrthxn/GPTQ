@@ -63,7 +63,7 @@ def load_quant(
 	print('Loading model ...')
 	if (Path(checkpoint) / f'{filename}.safetensors').exists():
 		from safetensors.torch import load_file as safe_load
-		model.load_state_dict(safe_load(Path(checkpoint) / f'{filename}.safetensors'))
+		model.load_state_dict(safe_load(Path(checkpoint) / f'{filename}.safetensors'), strict=False)
 	elif (Path(checkpoint) / f'{filename}.pt').exists():
 		model.load_state_dict(torch.load(Path(checkpoint) / f'{filename}.pt'), strict=False)
 	else:
