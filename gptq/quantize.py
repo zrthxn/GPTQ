@@ -23,6 +23,7 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('--model', type=str, required=True, help='llama model to load')
 parser.add_argument('--dataset', type=str, choices=['wikitext-2', 'ptb', 'ptb-new', 'c4'], required=True, help='Where to extract calibration data from.')
+parser.add_argument('--device', type=str, choices=['cpu', 'cuda'], default="cpu", help='Device.')
 parser.add_argument('--seed',type=int, default=0, help='Seed for sampling the calibration data.')
 parser.add_argument('--nsamples', type=int, default=128, help='Number of calibration data samples.')
 parser.add_argument('--percdamp', type=float, default=.01, help='Percent of the average Hessian diagonal to use for dampening.')
@@ -52,7 +53,7 @@ def main():
 
 	print('Quantizing...')
 	tick = time.time()
-	quantizers = llama_sequential(model, dataloader, device='cuda', wbits=args.wbits, nsamples=args.nsamples, true_sequential=args.true_sequential, sym=args.sym, percdamp=args.percdamp, groupsize=args.groupsize, act_order=args.act_order)
+	quantizers = llama_sequential(model, dataloader, device=args.device, wbits=args.wbits, nsamples=args.nsamples, true_sequential=args.true_sequential, sym=args.sym, percdamp=args.percdamp, groupsize=args.groupsize, act_order=args.act_order)
 	print(f"Total time: {time.time() - tick:.2f}s")
 
 	print('Packing...')
